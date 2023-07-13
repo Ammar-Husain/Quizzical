@@ -1,0 +1,129 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0px;
+	/* background-color: antiquewhite; */
+	padding: 0px 20px;
+}
+.start-page {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	padding: 20px;
+}
+.start-page-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.game-name {
+	color: #481668;
+	font-size: 40px;
+	font-weight: 800;
+	letter-spacing: 2px;
+}
+.description {
+	margin-top: 12px;
+	font-size: 20px;
+	/* color: #26003F; */
+}
+.select-category {
+	margin-top: 18px;
+	padding: 6px 8px;
+	text-align: center;
+	background-color: black;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	font-size: 16px;
+	
+}
+.start-quizz-button,
+.check-answers-button,
+.play-again-button,
+.back-home {
+	margin: 12px;
+	padding: 10px 40px;
+	background-color: #400097;
+	border: none;
+	border-radius: 8px;
+	color: white;
+	font-size: 18px;
+}
+.quiz-page{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center
+}
+.questions-container {
+	margin-top: 50px;
+	width: 80%;
+}
+.question {
+	box-shadow: -1px 1px 0px 0px rgba(0, 0, 0, .1);
+	padding: 16px;
+}
+
+.question-text {
+	color: #5E3873;
+	font-size: 15px;
+	font-weight: 600;
+	max-width: 500px;
+}
+.options {
+	margin-top: 14px;
+	display: grid;
+	display: flex;
+	column-gap: 16px;
+	overflow-x: scroll;
+}
+.option {
+	color: #656565;
+	font-size: 13px;
+	white-space: nowrap;
+	font-weight: 500;
+	padding: 6px 10px;
+	background-color: transparent;
+	border: 1px solid gray;
+	border-radius: 8px;
+}
+.selected-option {
+	background-color: #F3B1FF;
+	color: black;
+}
+.check-answers-button {
+	margin: 30px auto;
+	padding: 8px 12px;
+	font-size: 17px;
+}
+.correct-answer {
+	color: black;
+	background-color: #68B55D;
+}
+.wrong-answer {
+	color: black;
+	background-color: #FF90A5;
+}
+.test {
+	background-color: black
+}
+.result {
+	margn: 20px 0px;
+	display: flex;
+	flex-direction: column;
+	align-items :center;
+}
+.result >span {
+	margin: 20px 0px;
+	color: purple;
+	font-size: 18px;
+	font-weight: 500;
+}
+.back-home {
+	background-color: #15FF0A;
+	color: black;
+}
