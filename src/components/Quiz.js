@@ -7,32 +7,69 @@ export default function Quiz({category, setPage}) {
 	const [questions, setQuestions] = useState([])
 	const [answers, setAnswers] = useState(['', '', '', '', ''])
 	const [result, setResult] = useState({correctAnswers: 0, wrongAnswers: 0, unAnsweredQuestions: 0})
+	const [error, setError] = useState(false)
 	useEffect(() => {
 		if (isPlaying) {
 			let url, categoryNumber;
-			category === 'general'? categoryNumber=9
-			: category === 'scince'? categoryNumber=17
-			: category === 'computer'? categoryNumber=18
-			: category === 'math'? categoryNumber=19
-			: category === 'sport'? categoryNumber=21
-			: category === 'geography'? categoryNumber=22
-			: category === 'history'? categoryNumber=23
-			: category === 'politics'? categoryNumber=24
-			: category === 'animals'? categoryNumber=27
-			: categoryNumber=31
+			// category  === 'general'? categoryNumber=9
+			// : category === 'scince'? categoryNumber=17
+			// : category === 'computer'? categoryNumber=18
+			// : category === 'math'? categoryNumber=19
+			// : category === 'sport'? categoryNumber=21
+			// : category === 'geography'? categoryNumber=22
+			// : category === 'history'? categoryNumber=23
+			// : category === 'politics'? categoryNumber=24
+			// : category === 'animals'? categoryNumber=27
+			// : categoryNumber=31
+			switch(category) {
+				case 'general' :
+					categoryNumber=9
+					break
+				case 'scince':
+ 					categoryNumber=17
+					break
+				case 'computer':
+					categoryNumber=18
+					break
+				case 'math':
+		 			categoryNumber=19
+					break
+				case 'sport':
+	 				categoryNumber=21
+					break
+				case 'geography':
+					categoryNumber=22
+					break
+				case 'history' :
+					categoryNumber=23
+					break
+				case 'politics':
+					categoryNumber=24
+					break
+				case 'animals' :
+					categoryNumber=27
+					break
+				case 'anime':
+					categoryNumber=31
+					break
+			}
 			url = `https://opentdb.com/api.php?amount=5&category=${categoryNumber}&type=multiple`
 			async function fetchTheQuestions() {
-				const response = await fetch(url)
-				const data = await response.json()
-				const questionsData = data.results.map((result) => {
-					return {
-						question: result.question,
-						correctAnswer: result.correct_answer,
-						options: shuffle([result.correct_answer, ...result.incorrect_answers]),
-						id: nanoid()
-					}
-				})
-				setQuestions(questionsData)
+				try {
+					const response = await fetch(url)
+					const data = await response.json()
+					const questionsData = data.results.map((result) => {
+						return {
+							question: result.question,
+							correctAnswer: result.correct_answer,
+							options: shuffle([result.correct_answer, ...result.incorrect_answers]),
+							id: nanoid()
+						}
+					})
+					setQuestions(questionsData)
+				} catch(error) {
+					setError(true)
+				}
 			}
 			fetchTheQuestions();
 		}
@@ -121,5 +158,7 @@ export default function Quiz({category, setPage}) {
 						}
 					</div>	
 		)
+	}else if(error) {
+		return <h3>Error: You don't have internet connection.</h3>
 	} else return (<h1>Loading ...</h1>)
 }
