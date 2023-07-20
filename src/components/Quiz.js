@@ -142,10 +142,9 @@ export default function Quiz({category, setPage}) {
 							</button>
 							: <div className="result">
 								<span>
-									You scored <span style={{color: 'green'}}>{result.correctAnswers}</span> correct answers
-									and <span style={{color: 'red'}}>{result.wrongAnswers}</span> wrong answers
+									You scored <span style={{color: 'green'}}>{result.correctAnswers}</span> correct answer{result.correctAnswer === 1 ?'':'s'} and <span style={{color: 'red'}}>{result.wrongAnswers}</span> wrong answer{result.wrongAnswers === 1 ?'':'s'}
 									{result.unAnsweredQuestions?
-										<span> and <span style={{color: 'gray'}}>{result.unAnsweredQuestions}</span> unanswered questions</span>:""
+										<span> and <span style={{color: 'gray'}}>{result.unAnsweredQuestions}</span> unanswered question{result.unAnsweredQuestions === 1 ?'':'s'}</span>:""
 									}
 								</span>
 								<div>
